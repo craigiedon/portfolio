@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head> 
+  <title> Craig Innes</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header>
+    <h1 class="title"> Craig Innes</h1>
+  </header>
+
+  <nav class="linksNav">
+      <a href="index.html" class="linkButton">
+	  Games
+      </a>
+
+      <a href="http://craiginnes.tumblr.com" class="linkButton">
+	  Writing
+      </a>
+
+      <a href="art.html" class="linkButton">      
+	  Art
+      </a>
+
+      <a href="about.html" class="linkButton">
+	  About
+      </a>
+
+  </nav>
+
+  <main>
+  </main>
+
+  <footer>
+  </footer>
+</body>
+</html>
