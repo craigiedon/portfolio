@@ -1,0 +1,16 @@
+{
+  "name": "portfolio-site",
+  "dependencies": {
+    "grunt-cli": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-less": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-open": "latest",
+    "grunt-ssh": "^0.11.2",
+    "matchdep": "latest"
+  },
+  "devDependencies": {
+    "grunt-express-server": "^0.4.19"
+  }
+}
