@@ -40,7 +40,7 @@ module.exports = function(grunt){
 	},
 	watch: {
 	    express: {
-		files: ['**/*.less', '**/*.js'],
+		files: ['**/*.html', '**/*.less', '**/*.js'],
 		tasks: ['less:style', 'express:dev'],
 		options: {
 		    spawn: false,
