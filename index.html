@@ -3,83 +3,23 @@
 <head> 
   <title> Craig Innes</title>
   <link href="styles/style.css" rel="stylesheet" type="text/css">
+  <script src="bower_components/angular/angular.min.js"> </script>
+  <script src="bower_components/angular-route/angular-route.min.js"> </script>
+  <script src="js/client.js"> </script>
 </head>
-<body>
+<body ng-app="portfolio" ng-controller="MainCtrl">
   <header>
     <h1 class="title"> Craig Innes</h1>
   </header>
 
   <nav class="linksNav">
-    <a href="index.html" class="linkButton" id="selectedLink">Games</a>
-    <a href="http://craiginnes.tumblr.com" class="linkButton">Writing</a>
-    <a href="art.html" class="linkButton">Art</a>
-    <a href="about.html" class="linkButton">About</a>
+    <a ng-click="selectNav(0)" ng-class="{selectedLink: selectedNav[0]}" href="#games" class="linkButton">Games</a>
+    <a ng-click="selectNav(1)" ng-class="{selectedLink: selectedNav[1]}" href="http://craiginnes.tumblr.com" class="linkButton">Writing</a>
+    <a ng-click="selectNav(2)" ng-class="{selectedLink: selectedNav[2]}" href="#art" class="linkButton">Art</a>
+    <a ng-click="selectNav(3)" ng-class="{selectedLink: selectedNav[3]}" href="#about" class="linkButton">About</a>
   </nav> 
   
-  <main>
-
-    <article class="game">
-      <h2> Bumper Flip </h2>
-      <p> September 2014 </p>
-      <img src="images/bumperFlip.png">
-      <div class="description">
-	<p> My sixth game. Made in Unity. A 2 player sports game in which you must hit a puck into your opponent's goal area in an arena filled with pinball bumpers.
-	  Requires 2 Xbox 360 Controllers to play </p>
-	<a href="Games/bumperFlip.zip"> Download game as .zip file </a>
-      </div>
-    </article>
-
-    <article class="game"> 
-      <h2> Stealth Duck </h2>
-      <p> August 2014 </p>
-      <img src="images/stealthDuck.png">
-      <div class="description">
-	<p> My fifth game. Made in Unity. A stealth game where you play as a duck trying to steal bread and escape whilst avoiding guards </p>
-	<a href="Games/stealthWeb/stealthWeb.html"> Play in Unity Webplayer </a>
-	</div>
-    </article>
-
-    <article class="game">
-      <h2> Cyber Blast </h2>
-      <p> February 2014 </p>
-      <img src="images/cyberBlast.png">
-      <div class="description">
-	<p> My fourth game. Made using Java and Libgdx. An attempt at copying the "Bomberman" arena battler formula. Drop bombs and destory everyone else. Requires 4 Xbox 360 controllers to play </p>
-	<a href="Games/cyberBlast.jar"> Download Jar </a>
-      </div>
-    </article>
-
-    <article class="game">
-      <h2>Polar Freeze</h2>
-      <p> December 2013</p>
-      <img src="images/polarFreeze.png">
-      <div class="description">
-	<p> My third game. Made using Java and Libgdx. A simple platformer where you play as a polar bear trying to get home. Avoid dangerous heat detectors by freezing yourself and sliding past them. </p>
-	<a href="Games/polarFreeze.jar"> Download Jar </a>
-      </div>
-    </article>
-
-    <article class="game"> 
-      <h2> Cave Hoarder </h2>
-      <p> September 2013 </p>
-      <img src="images/caveHoarder.png">
-      <div class="description">
-      <p> My second game. Made using Java and the Libgdx framework. A two player turn based game where each player controls a gem hungry troll and their goblin minion. Carve a path to the gems scattered around the cave before your opponent can reach them by destroying the dirt in your way or by creating new dirt blocks to walk on. </p>
-      <a href="Games/caveHoarder.jar"> Download Jar </a>
-      </div>
-    </article>
-
-    <article class="game">
-      <h2>Pong Heroes</h2>
-      <p> December 2012 </p>
-      <img src="images/pongHeroes.png">
-      <div class="description">
-	<p>
-	  My first game. Made using Flash and flixel. A classic game of pong, but now with 5 characters with different powers! Make your pong bad jump, stretch, stick, shoot and block. Play local multiplayer or against the computer.
-	</p>
-	<a href="http://www.newgrounds.com/portal/view/608349"> Play on Newgrounds </a>
-      </div>
-    </article>
+  <main ng-view>
   </main>
 
   <footer>

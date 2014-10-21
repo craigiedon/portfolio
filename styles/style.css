@@ -51,7 +51,7 @@ h3 {
 .linkButton:hover {
   background-color: #7F577F;
 }
-#selectedLink {
+.selectedLink {
   display: inline-block;
   background-color: #7F577F;
   width: 20%;
