@@ -43,7 +43,6 @@ module.exports = function(grunt){
 		files: ['**/*.html', '**/*.less', '**/*.js'],
 		tasks: ['less:style', 'express:dev'],
 		options: {
-		    atBegin: true,
 		    spawn: false,
 		    livereload: true
 		}
@@ -59,6 +58,7 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-ssh');
 
     grunt.registerTask('look', ['watch']);
+    grunt.registerTask('serve', ['express','watch']);
     grunt.registerTask('deploy', ['sshexec:deploy']);
     
 };	    
