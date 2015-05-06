@@ -1,16 +1,19 @@
 {
-    "name": "portfolio-site",
-    "dependencies": {
-	"coffee-script": "latest",
-	"express": "^4.12.3",
-	"grunt-cli": "latest",
-	"grunt-contrib-concat": "latest",
-	"grunt-contrib-less": "latest",
-	"grunt-contrib-uglify": "latest",
-	"grunt-contrib-watch": "latest",
-	"grunt-open": "latest",
-	"grunt-ssh": "^0.11.2",
-	"grunt-express-server": "^0.4.19",
-	"matchdep": "latest"
-    }
+  "name": "portfolio-site",
+  "dependencies": {
+    "body-parser": "^1.12.3",
+    "coffee-script": "latest",
+    "express": "^4.12.3",
+    "grunt-cli": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-less": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-express-server": "^0.4.19",
+    "grunt-open": "latest",
+    "grunt-ssh": "^0.11.2",
+    "matchdep": "latest",
+    "mongodb": "^1.4.35",
+    "mongoskin": "^1.4.13"
+  }
 }

@@ -15,7 +15,27 @@ portfolioApp.config(['$routeProvider', function($routeProvider){
 	});
 }]);
 
-portfolioApp.controller('MainCtrl', function($scope){
+portfolioApp.factory('gameService', function($http){
+    return {
+	getAll: function(){
+	    return $http.get('/games');
+	},
+	get: function(id){
+	    return $http.get('/games/' + id);
+	},
+	delete: function(id){
+	    return $http.delete('/games/' + id);
+	},
+	update: function(id, newGame){
+	    return $http.put('/games/' + id, {data: newGame});
+	},
+	post: function(newGame){
+	    return $http.post('/games', {data: newGame});
+	}
+    };
+});
+
+portfolioApp.controller('MainCtrl', function($scope, gameService){
     $scope.selectedNav = [true, false, false, false];
 
     $scope.selectNav = function(selectedIndex){
@@ -24,4 +44,8 @@ portfolioApp.controller('MainCtrl', function($scope){
 	}
 	$scope.selectedNav[selectedIndex] = true;
     };
+
+    gameService.getAll().success(function(data){
+	console.log(data);
+    });
 });
