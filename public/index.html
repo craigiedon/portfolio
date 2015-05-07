@@ -5,6 +5,7 @@
   <link href="styles/style.css" rel="stylesheet" type="text/css">
   <script src="bower_components/angular/angular.min.js"> </script>
   <script src="bower_components/angular-route/angular-route.min.js"> </script>
+  <script src="bower_components/angular-cookies/angular-cookies.min.js"> </script>
   <script src="js/client.js"> </script>
 </head>
 <body ng-app="portfolio" ng-controller="MainCtrl">
@@ -17,7 +18,9 @@
     <a ng-click="selectNav(1)" ng-class="{selectedLink: selectedNav[1]}" href="http://craiginnes.tumblr.com" class="linkButton">Writing</a>
     <a ng-click="selectNav(2)" ng-class="{selectedLink: selectedNav[2]}" href="#art" class="linkButton">Art</a>
     <a ng-click="selectNav(3)" ng-class="{selectedLink: selectedNav[3]}" href="#about" class="linkButton">About</a>
-  </nav> 
+  </nav>
+
+  <button ng-click="post()"> New Game </button>
   
   <main ng-view>
   </main>

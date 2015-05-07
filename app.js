@@ -3,6 +3,10 @@ var app = express();
 var path = require('path');
 var ObjectId = require('mongodb').ObjectID;
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 //Mongoskin reference at http://www.hacksparrow.com/mongoskin-tutorial-with-examples.html
 //remember to install first with npm install mongoskin
@@ -10,10 +14,48 @@ var db = require('mongoskin').db('mongodb://owner:menthol1@localhost:27017/websi
 
 //allow parsing of body messages
 app.use(bodyParser.json()); // application/json
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true})); // application/x-www-form-urlencoded
+app.use(session({secret: 'I like turtles',
+		 resave: true,
+		 saveUninitialized: true}
+	       ));
+app.use(passport.initialize());
+app.use(passport.session());
 
-app.route('/games/:id?')
-    .get(function(req,res){
+passport.serializeUser(function(user, done){
+    done(null, user.username);
+});
+
+passport.deserializeUser(function(username, done){
+    db.collection('users').findOne(
+	{username: username},
+	function(err, user){
+	    done(err, user);
+	});
+});
+
+passport.use(new LocalStrategy(
+    function(username, password, done){
+	if(username === 'admin' && password === 'lynda'){
+	    return done(null, {username: 'admin'});
+	}
+
+	return done(null, false);
+    }
+));
+
+function isLoggedIn(req, res, next) {
+    console.log(req.isAuthenticated());
+    next();
+}
+
+app.post('/authenticate', passport.authenticate('local'),
+	 function(req,res){
+	     res.send("Authenticated successfully");
+	 });
+
+app.get('/games/:id?', function(req,res){
 	if(req.params.id){
 	    db.collection('games').findOne(
 		{_id: ObjectId(req.params.id)},
@@ -28,50 +70,45 @@ app.route('/games/:id?')
 		res.send(result);
 	    });
 	}
-    })
-    .post(function(req,res){
-	db.collection('games').insert({
-	    "name": req.body.name,
-	    "description": req.body.description,
-	    "image": req.body.image
-	},function(err,result){
+});
+
+app.post('/games', isLoggedIn,
+	 function(req,res){
+	     console.log("You made it into the post");
+	     db.collection('games').insert({
+		 "name": req.body.name,
+		 "description": req.body.description,
+		 "image": req.body.image
+	     },function(err,result){
+		 if(err) throw err;
+		 res.send(result);
+	     });
+	 });
+
+app.delete('/games/:id', function(req,res){
+    db.collection('games').remove(
+	{_id: ObjectId(req.params.id)},
+	function(err){
 	    if(err) throw err;
-	    res.send(result);
+	    res.send("Removed");
 	});
-    })
-    .delete(function(req,res){
-	if(req.params.id){
-	    db.collection('games').remove(
-		{_id: ObjectId(req.params.id)},
-		function(err){
-		    if(err) throw err;
-		    res.send("Removed");
-		});
+});
+
+app.put('/games/id', function(req,res){
+    db.collection('games').update(
+	{_id: ObjectId(req.params.id)},
+	{$set:
+	 {"name": req.body.name,
+	  "description": req.body.description,
+	  "image": req.body.image
+	 }
+	},
+	function(err){
+	    if(err) throw err;
+	    res.send("Updated");
 	}
-	else{
-	    res.send("No deletion target given");
-	}
-    })
-    .put(function(req,res){
-	if(req.params.id){
-	    db.collection('games').update(
-		{_id: ObjectId(req.params.id)},
-		{$set:
-		 {"name": req.body.name,
-		  "description": req.body.description,
-		  "image": req.body.image
-		 }
-		},
-		function(err){
-		    if(err) throw err;
-		    res.send("Updated");
-		}
-	    );
-	}
-	else{
-	    res.send("No id specified for updating");
-	}
-    });
+    );
+});
 
 app.use(express.static("public"));
 app.use(function(req,res,next){

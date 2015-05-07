@@ -1,19 +1,58 @@
-var portfolioApp = angular.module('portfolio', ['ngRoute']);
+var portfolioApp = angular.module('portfolio', ['ngRoute', 'ngCookies']);
+
+portfolioApp.factory('authenticator', function($http, $cookies){
+    var authenticated = $cookies.user ? true : false;
+    var signIn = function(userData){
+	if(userData){
+	    return $http.post("/authenticate", userData);
+	}
+    };
+    var signOut = function(){
+	return $http.get("/logout");
+    };
+
+    var register = function(){
+    };
+
+    return {
+	signIn: signIn,
+	signOut: signOut,
+	isAuthenticated: authenticated,
+	register: register
+    };
+});
+
 portfolioApp.config(['$routeProvider', function($routeProvider){
+
+    var authenticationNeeded = {
+	auth: function(authenticator, $location){
+	    if(!authenticator.isAuthenticated){
+		$location.path('/login');
+	    }
+	}
+    };
+	
+	
     $routeProvider
 	.when('/', {
 	    templateUrl: 'templates/games.html'
 	})
 	.when('/art', {
-	    templateUrl: 'templates/art.html'
+	    templateUrl: 'templates/art.html',
+	    resolve: authenticationNeeded
 	})
 	.when('/about', {
-	    templateUrl: 'templates/about.html'
+	    templateUrl: 'templates/about.html',
+	    resolve: authenticationNeeded
 	})
 	.when('/games', {
 	    redirectTo: '/'
+	})
+	.when('/login', {
+	    templateUrl: 'templates/login.html'
 	});
 }]);
+	    
 
 portfolioApp.factory('gameService', function($http){
     return {
@@ -29,13 +68,13 @@ portfolioApp.factory('gameService', function($http){
 	update: function(id, newGame){
 	    return $http.put('/games/' + id, {data: newGame});
 	},
-	post: function(newGame){
+	createNewGame: function(newGame){
 	    return $http.post('/games', {data: newGame});
 	}
     };
 });
 
-portfolioApp.controller('MainCtrl', function($scope, gameService){
+portfolioApp.controller('MainCtrl', function($rootScope, $scope, gameService, authenticator){
     $scope.selectedNav = [true, false, false, false];
 
     $scope.selectNav = function(selectedIndex){
@@ -48,4 +87,20 @@ portfolioApp.controller('MainCtrl', function($scope, gameService){
     gameService.getAll().success(function(data){
 	console.log(data);
     });
+
+    authenticator.signIn({username: 'admin', password: 'lynda'})
+	.success(function(data){
+	    $rootScope.session = data;
+	    console.log(data);
+	});
+
+    $scope.post = function(){
+	gameService.createNewGame({"name": "Brand new game",
+				   "description": "new",
+				   "image": "image.png"})
+	    .success(function(data){
+		console.log(data);
+	    });
+    };
+    
 });
