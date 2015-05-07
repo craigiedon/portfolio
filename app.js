@@ -16,23 +16,13 @@ var db = require('mongoskin').db('mongodb://owner:menthol1@localhost:27017/websi
 app.use(bodyParser.json()); // application/json
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true})); // application/x-www-form-urlencoded
-app.use(session({secret: 'I like turtles',
-		 resave: true,
-		 saveUninitialized: true}
-	       ));
-app.use(passport.initialize());
-app.use(passport.session());
 
 passport.serializeUser(function(user, done){
     done(null, user.username);
 });
 
-passport.deserializeUser(function(username, done){
-    db.collection('users').findOne(
-	{username: username},
-	function(err, user){
-	    done(err, user);
-	});
+passport.deserializeUser(function(name, done){
+	done(null, {username: name});
 });
 
 passport.use(new LocalStrategy(
@@ -45,15 +35,25 @@ passport.use(new LocalStrategy(
     }
 ));
 
+app.use(session({secret: 'I like turtles',
+		 resave: true,
+		 saveUninitialized: true}
+			   ));
+app.use(passport.initialize());
+app.use(passport.session());
+
 function isLoggedIn(req, res, next) {
-    console.log(req.isAuthenticated());
-    next();
+	console.log("Session information", req.session);
+    console.log("Are you authenticated?", req.isAuthenticated());
+	if(req.isAuthenticated()){
+		next();
+	}
 }
 
 app.post('/authenticate', passport.authenticate('local'),
-	 function(req,res){
-	     res.send("Authenticated successfully");
-	 });
+		 function(req,res){
+			 res.send(req.user);
+		 });
 
 app.get('/games/:id?', function(req,res){
 	if(req.params.id){
@@ -81,7 +81,7 @@ app.post('/games', isLoggedIn,
 		 "image": req.body.image
 	     },function(err,result){
 		 if(err) throw err;
-		 res.send(result);
+			 res.send(result);
 	     });
 	 });
 

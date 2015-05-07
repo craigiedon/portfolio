@@ -1,6 +1,7 @@
 var portfolioApp = angular.module('portfolio', ['ngRoute', 'ngCookies']);
 
 portfolioApp.factory('authenticator', function($http, $cookies){
+	console.log("Cookies variable?", $cookies);
     var authenticated = $cookies.user ? true : false;
     var signIn = function(userData){
 	if(userData){
@@ -35,7 +36,8 @@ portfolioApp.config(['$routeProvider', function($routeProvider){
 	
     $routeProvider
 	.when('/', {
-	    templateUrl: 'templates/games.html'
+	    templateUrl: 'templates/games.html',
+		resolve: authenticationNeeded
 	})
 	.when('/art', {
 	    templateUrl: 'templates/art.html',
@@ -49,7 +51,8 @@ portfolioApp.config(['$routeProvider', function($routeProvider){
 	    redirectTo: '/'
 	})
 	.when('/login', {
-	    templateUrl: 'templates/login.html'
+	    templateUrl: 'templates/login.html',
+		controller: 'loginCtrl'
 	});
 }]);
 	    
@@ -85,22 +88,25 @@ portfolioApp.controller('MainCtrl', function($rootScope, $scope, gameService, au
     };
 
     gameService.getAll().success(function(data){
-	console.log(data);
+		console.log(data);
     });
-
-    authenticator.signIn({username: 'admin', password: 'lynda'})
-	.success(function(data){
-	    $rootScope.session = data;
-	    console.log(data);
-	});
 
     $scope.post = function(){
 	gameService.createNewGame({"name": "Brand new game",
 				   "description": "new",
 				   "image": "image.png"})
 	    .success(function(data){
-		console.log(data);
+			console.log(data);
 	    });
     };
     
+});
+
+portfolioApp.controller('loginCtrl', function($scope, authenticator){
+    $scope.login = function(){
+		authenticator.signIn({username: 'admin', password: 'lynda'})
+			.success(function(data){
+				console.log("Sign in success:" , data.username);
+			});
+	};
 });
