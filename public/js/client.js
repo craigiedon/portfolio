@@ -1,8 +1,7 @@
 var portfolioApp = angular.module('portfolio', ['ngRoute', 'ngCookies']);
 
 portfolioApp.factory('authenticator', function($http, $cookies){
-	console.log("Cookies variable?", $cookies);
-    var authenticated = $cookies.user ? true : false;
+
     var signIn = function(userData){
 	if(userData){
 	    return $http.post("/authenticate", userData);
@@ -15,7 +14,10 @@ portfolioApp.factory('authenticator', function($http, $cookies){
     return {
 		signIn: signIn,
 		signOut: signOut,
-		isAuthenticated: authenticated
+		isAuthenticated: function(){
+			console.log("Cookies variable?", $cookies);
+			return $cookies.user ? true : false;
+		}
     };
 });
 
@@ -23,7 +25,8 @@ portfolioApp.config(['$routeProvider', function($routeProvider){
 
     var authenticationNeeded = {
 		auth: function(authenticator, $location){
-			if(!authenticator.isAuthenticated){
+			if(!authenticator.isAuthenticated()){
+				console.log("Tried to get through the resolve barrier and failed");
 				$location.path('/login');
 			}
 		}
@@ -66,10 +69,10 @@ portfolioApp.factory('gameService', function($http){
 	    return $http.delete('/games/' + id);
 	},
 	update: function(id, newGame){
-	    return $http.put('/games/' + id, {data: newGame});
+	    return $http.put('/games/' + id, newGame);
 	},
 	createNewGame: function(newGame){
-	    return $http.post('/games', {data: newGame});
+	    return $http.post('/games', newGame);
 	}
     };
 });
@@ -89,25 +92,30 @@ portfolioApp.controller('MainCtrl', function($rootScope, $scope, gameService, au
     });    
 });
 
-portfolioApp.controller('loginCtrl', function($scope, $location, authenticator){
+portfolioApp.controller('loginCtrl', function($scope, $location, authenticator, $cookies){
 	$scope.user = {username: "", password: ""};
     $scope.login = function(){
 		console.log("Logging in with credentials: ", $scope.user);
 		authenticator.signIn($scope.user)
 			.success(function(data){
 				console.log("Sign in success:" , data.username);
+				$cookies.user = data.username;
 				$location.path("/admin");
 			});
 	};
 });
 
-portfolioApp.controller('adminCtrl', function($scope, gameService){
+portfolioApp.controller('adminCtrl', function($scope, gameService, $cookies, $location){
 	$scope.game = {name: "", description: "", image: ""};
 				   
 	$scope.newGame = function(){
 		gameService.createNewGame($scope.game)
 			.success(function(data){
 				console.log(data);
+			})
+			.error(function(data){
+				$cookies.user = null;
+				$location.path("/login");
 			});
     };
 });

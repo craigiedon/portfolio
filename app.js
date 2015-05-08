@@ -27,11 +27,18 @@ passport.deserializeUser(function(name, done){
 
 passport.use(new LocalStrategy(
     function(username, password, done){
-	if(username === 'admin' && password === 'lynda'){
-	    return done(null, {username: 'admin'});
-	}
-
-	return done(null, false);
+		db.collection('users').findOne(
+			{username: username},
+			function(err, result){
+				if(err){
+					return done(err);
+				}
+				if(result && result.password === password){
+					return done(null, {"username": username});
+				}
+				
+				return done(null, false);
+			});
     }
 ));
 
@@ -76,18 +83,14 @@ app.get('/games/:id?', function(req,res){
 
 app.post('/games', isLoggedIn,
 	 function(req,res){
-	     console.log("You made it into the post");
-	     db.collection('games').insert({
-		 "name": req.body.name,
-		 "description": req.body.description,
-		 "image": req.body.image
-	     },function(err,result){
-		 if(err) throw err;
+	     console.log("You made it into the post", req.body);
+	     db.collection('games').insert(req.body , function(err,result){
+			 if(err) throw err;
 			 res.send(result);
 	     });
 	 });
 
-app.delete('/games/:id', function(req,res){
+app.delete('/games/:id', isLoggedIn, function(req,res){
     db.collection('games').remove(
 	{_id: ObjectId(req.params.id)},
 	function(err){
@@ -96,7 +99,7 @@ app.delete('/games/:id', function(req,res){
 	});
 });
 
-app.put('/games/id', function(req,res){
+app.put('/games/id', isLoggedIn, function(req,res){
     db.collection('games').update(
 	{_id: ObjectId(req.params.id)},
 	{$set:
