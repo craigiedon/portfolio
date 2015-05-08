@@ -105,9 +105,7 @@ portfolioApp.controller('adminCtrl', function($scope, gameService){
 	$scope.game = {name: "", description: "", image: ""};
 				   
 	$scope.newGame = function(){
-		gameService.createNewGame({"name": "Brand new game",
-								   "description": "new",
-								   "image": "image.png"})
+		gameService.createNewGame($scope.game)
 			.success(function(data){
 				console.log(data);
 			});
