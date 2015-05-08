@@ -1,5 +1,10 @@
 var express = require('express');
+var http = require('http');
+var https = require('https');
 var app = express();
+var multer = require('multer');
+var fs = require('fs');
+
 var path = require('path');
 var ObjectId = require('mongodb').ObjectID;
 var bodyParser = require('body-parser');
@@ -22,71 +27,78 @@ passport.serializeUser(function(user, done){
 });
 
 passport.deserializeUser(function(name, done){
-	done(null, {username: name});
+    done(null, {username: name});
 });
 
 passport.use(new LocalStrategy(
     function(username, password, done){
-		db.collection('users').findOne(
-			{username: username},
-			function(err, result){
-				if(err){
-					return done(err);
-				}
-				if(result && result.password === password){
-					return done(null, {"username": username});
-				}
-				
-				return done(null, false);
-			});
+	db.collection('users').findOne(
+	    {username: username},
+	    function(err, result){
+		if(err){
+		    return done(err);
+		}
+		if(result && result.password === password){
+		    return done(null, {"username": username});
+		}
+		
+		return done(null, false);
+	    });
     }
 ));
 
 app.use(session({secret: 'I like turtles',
 		 resave: true,
 		 saveUninitialized: true}
-			   ));
+	       ));
 app.use(passport.initialize());
 app.use(passport.session());
 
-function isLoggedIn(req, res, next) {
-	console.log("Session information", req.session);
-    console.log("Are you authenticated?", req.isAuthenticated());
-	if(req.isAuthenticated()){
-		return next();
-	}
+app.use(multer({dest: './public/Games',
+		rename: function(fieldname, filename){
+		    return filename;
+		}
+	       })
+       );
 
-	res.status(403).end();
+function isLoggedIn(req, res, next) {
+    console.log("Session information", req.session);
+    console.log("Are you authenticated?", req.isAuthenticated());
+    if(req.isAuthenticated()){
+	return next();
+    }
+
+    res.status(403).end();
 }
 
 app.post('/authenticate', passport.authenticate('local'),
-		 function(req,res){
-			 res.send(req.user);
-		 });
+	 function(req,res){
+	     res.send(req.user);
+	 });
 
 app.get('/games/:id?', function(req,res){
-	if(req.params.id){
-	    db.collection('games').findOne(
-		{_id: ObjectId(req.params.id)},
-		function(err, result){
-		    if(err) throw err;
-		    res.send(result);
-		});
-	}
-	else{
-	    db.collection('games').find().toArray(function(err,result){
+    if(req.params.id){
+	db.collection('games').findOne(
+	    {_id: ObjectId(req.params.id)},
+	    function(err, result){
 		if(err) throw err;
 		res.send(result);
 	    });
-	}
+    }
+    else{
+	db.collection('games').find().toArray(function(err,result){
+	    if(err) throw err;
+	    res.send(result);
+	});
+    }
 });
 
-app.post('/games', isLoggedIn,
+app.post('/games',
+	 isLoggedIn,
 	 function(req,res){
-	     console.log("You made it into the post", req.body);
-	     db.collection('games').insert(req.body , function(err,result){
-			 if(err) throw err;
-			 res.send(result);
+	     db.collection('games').insert(req.body, function(err,result){
+		 if(err) throw err;
+		 res.send(result);
 	     });
 	 });
 
@@ -120,9 +132,9 @@ app.use(function(req,res,next){
     res.status(404).send("Sorry, can't find that!");
 });
 
-var server = app.listen(80, function(){
-    var host = server.address().address;
-    var port = server.address().port;
+var options = {
+    key: fs.readFileSync('security/key.pem'),
+    cert: fs.readFileSync('security/cert.pem')
+};
 
-    console.log("App listening at http://%s:%s", host, port);
-});
+http.createServer(app).listen(80);
