@@ -46,8 +46,10 @@ function isLoggedIn(req, res, next) {
 	console.log("Session information", req.session);
     console.log("Are you authenticated?", req.isAuthenticated());
 	if(req.isAuthenticated()){
-		next();
+		return next();
 	}
+
+	res.status(403).end();
 }
 
 app.post('/authenticate', passport.authenticate('local'),

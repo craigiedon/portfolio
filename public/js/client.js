@@ -12,50 +12,47 @@ portfolioApp.factory('authenticator', function($http, $cookies){
 	return $http.get("/logout");
     };
 
-    var register = function(){
-    };
-
     return {
-	signIn: signIn,
-	signOut: signOut,
-	isAuthenticated: authenticated,
-	register: register
+		signIn: signIn,
+		signOut: signOut,
+		isAuthenticated: authenticated
     };
 });
 
 portfolioApp.config(['$routeProvider', function($routeProvider){
 
     var authenticationNeeded = {
-	auth: function(authenticator, $location){
-	    if(!authenticator.isAuthenticated){
-		$location.path('/login');
-	    }
-	}
+		auth: function(authenticator, $location){
+			if(!authenticator.isAuthenticated){
+				$location.path('/login');
+			}
+		}
     };
 	
-	
     $routeProvider
-	.when('/', {
-	    templateUrl: 'templates/games.html',
-		resolve: authenticationNeeded
-	})
-	.when('/art', {
-	    templateUrl: 'templates/art.html',
-	    resolve: authenticationNeeded
-	})
-	.when('/about', {
-	    templateUrl: 'templates/about.html',
-	    resolve: authenticationNeeded
-	})
-	.when('/games', {
-	    redirectTo: '/'
-	})
-	.when('/login', {
-	    templateUrl: 'templates/login.html',
-		controller: 'loginCtrl'
-	});
+		.when('/', {
+			templateUrl: 'templates/games.html'
+		})
+		.when('/art', {
+			templateUrl: 'templates/art.html'
+		})
+		.when('/about', {
+			templateUrl: 'templates/about.html'
+		})
+		.when('/games', {
+			redirectTo: '/'
+		})
+		.when('/login', {
+			templateUrl: 'templates/login.html',
+			controller: 'loginCtrl'
+		})
+		.when('/admin', {
+			templateUrl: 'templates/admin.html',
+			controller: 'adminCtrl',
+			resolve: authenticationNeeded
+		});
+
 }]);
-	    
 
 portfolioApp.factory('gameService', function($http){
     return {
@@ -89,24 +86,30 @@ portfolioApp.controller('MainCtrl', function($rootScope, $scope, gameService, au
 
     gameService.getAll().success(function(data){
 		console.log(data);
-    });
-
-    $scope.post = function(){
-	gameService.createNewGame({"name": "Brand new game",
-				   "description": "new",
-				   "image": "image.png"})
-	    .success(function(data){
-			console.log(data);
-	    });
-    };
-    
+    });    
 });
 
-portfolioApp.controller('loginCtrl', function($scope, authenticator){
+portfolioApp.controller('loginCtrl', function($scope, $location, authenticator){
+	$scope.user = {username: "", password: ""};
     $scope.login = function(){
-		authenticator.signIn({username: 'admin', password: 'lynda'})
+		console.log("Logging in with credentials: ", $scope.user);
+		authenticator.signIn($scope.user)
 			.success(function(data){
 				console.log("Sign in success:" , data.username);
+				$location.path("/admin");
 			});
 	};
+});
+
+portfolioApp.controller('adminCtrl', function($scope, gameService){
+	$scope.game = {name: "", description: "", image: ""};
+				   
+	$scope.newGame = function(){
+		gameService.createNewGame({"name": "Brand new game",
+								   "description": "new",
+								   "image": "image.png"})
+			.success(function(data){
+				console.log(data);
+			});
+    };
 });
