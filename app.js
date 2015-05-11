@@ -92,7 +92,7 @@ app.get('/api/games/:id?', function(req,res){
 	    });
     }
     else{
-	db.collection('games').find().toArray(function(err,result){
+	db.collection('games').find().sort({"rank": 1}).toArray(function(err,result){
 	    if(err) throw err;
 	    res.send(result);
 	});
@@ -102,9 +102,26 @@ app.get('/api/games/:id?', function(req,res){
 app.post('/api/games',
 	 isLoggedIn,
 	 function(req,res){
-	     db.collection('games').insert(req.body, function(err,result){
+	     //Get games sorted by rank to find max rank
+	     db.collection('games').find().sort({"rank": 1}).toArray(function(err,results){
 		 if(err) throw err;
-		 res.send(result);
+		 var maxRank = 0;
+		 for(var i = 0; i < results.length; i++){
+		     if(results[i].rank >= maxRank){
+			 maxRank = results[i].rank + 1;
+		     }
+		 }
+
+		 console.log("The final value of maxRank: ", maxRank);
+
+		 //New game gets max rank plus one
+		 req.body.rank = maxRank;
+
+		 console.log("What am I sending off?", req.body);
+		 db.collection('games').insert(req.body, function(err,result){
+		     if(err) throw err;
+		     res.send(result);
+		 });
 	     });
 	 });
 

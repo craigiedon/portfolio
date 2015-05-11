@@ -1,1 +1,1 @@
-var app = angular.module('portfolio', ['ngRoute', 'ngCookies']);
+var app = angular.module('portfolio', ['ngRoute', 'ngCookies', 'ui.sortable']);
