@@ -1,8 +1,12 @@
 <h1> Edit Games </h1>
 
 <ul class="list-group">
-    <div class="list-group-item" ng-repeat="game in games">
-	{{game.name}}
-	<button ng-click="delete(game)"> Delete </button>
-    </div>
+  <li class="list-group-item" ng-repeat="game in games">
+    <span> {{game.name}} </span>
+
+    <span class="editGameButtonGroup">
+      <button ng-click="edit(game)"> Edit </button>
+      <button ng-click="delete(game)"> Delete </button>
+    </span>
+  </li>
 </ul>

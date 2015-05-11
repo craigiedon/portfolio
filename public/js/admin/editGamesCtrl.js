@@ -1,4 +1,4 @@
-app.controller('editGamesCtrl', function($scope, gameService){
+app.controller('editGamesCtrl', function($location, $scope, gameService){
     gameService.getAll()
 	.success(function(data){
 	    $scope.games = data;
@@ -11,6 +11,10 @@ app.controller('editGamesCtrl', function($scope, gameService){
 	    .success(function(data){
 		console.log(data);
 	    });
+    };
+
+    $scope.edit = function(game){
+	$location.path("/editGame/" + game._id);
     };
     
 });

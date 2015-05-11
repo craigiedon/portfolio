@@ -92,3 +92,6 @@ article.game div {
   text-decoration: none;
   font-weight: bold;
 }
+.editGameButtonGroup {
+  float: right;
+}

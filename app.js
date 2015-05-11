@@ -124,7 +124,7 @@ app.delete('/api/games/:id', isLoggedIn, function(req,res){
 	});
 });
 
-app.put('/api/games/id', isLoggedIn, function(req,res){
+app.put('/api/games/:id', isLoggedIn, function(req,res){
     var id;
     try{
 	id = ObjectId(req.params.id);
@@ -132,13 +132,12 @@ app.put('/api/games/id', isLoggedIn, function(req,res){
     catch(err){
 	return res.send("Invalid Object Id");
     }
+
+    delete req.body._id;
+    
     db.collection('games').update(
 	{_id: id},
-	{$set:
-	 {"name": req.body.name,
-	  "description": req.body.description
-	 }
-	},
+	{$set: req.body},
 	function(err){
 	    if(err) throw err;
 	    res.send("Updated");

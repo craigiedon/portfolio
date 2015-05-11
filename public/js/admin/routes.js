@@ -26,5 +26,10 @@ app.config(['$routeProvider', function($routeProvider){
 	    templateUrl: 'templates/editGames.html',
 	    controller: 'editGamesCtrl',
 	    resolve: authenticationNeeded
+	})
+	.when('/editGame/:id', {
+	    templateUrl: 'templates/editGame.html',
+	    controller: 'editGameCtrl',
+	    resolve: authenticationNeeded
 	});
 }]);
