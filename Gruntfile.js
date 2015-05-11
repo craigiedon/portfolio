@@ -1,40 +1,19 @@
 module.exports = function(grunt){
     
     grunt.initConfig({
-	sshconfig: {
-	    portfolioServer: {
-		host: 'craiginnes.com',
-		username: 'root',
-		agent: process.env.SSH_AUTH_SOCK,
-	    }
-	},
-
-	sshexec:{
-	    deploy:{
-		command: [
-		    'cd portfolio',
-		    'git pull'
-		].join(' && ')
-	    },
-	    options:{
-		config: 'portfolioServer'
-	    }
-	},
-	
 	express: {
 	    options:{
 	    },
 	    dev: {
 		options: {
-		    script: './app.js'
+		    script: './testServer.js'
 		}
 	    }
 	},
-	
 	less: {
 	    style: {
 		files: {
-		    "styles/style.css": "less/style.less"
+		    "public/styles/style.css": "less/style.less"
 		}
 	    }
 	},
@@ -55,10 +34,6 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-express-server');
     grunt.loadNpmTasks('grunt-open');
-    grunt.loadNpmTasks('grunt-ssh');
 
-    grunt.registerTask('look', ['watch']);
-    grunt.registerTask('serve', ['express','watch']);
-    grunt.registerTask('deploy', ['sshexec:deploy']);
-    
+    grunt.registerTask('serve', ['express:dev','watch']);
 };	    

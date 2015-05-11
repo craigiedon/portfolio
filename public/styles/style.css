@@ -4,64 +4,49 @@ body {
   padding: 0;
   margin: 0;
 }
+a {
+  text-decoration: none;
+}
+.gameContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.gameContainer span {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
 header {
   margin-top: 5%;
   margin-bottom: 3%;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-  text-align: center;
-}
-h1 {
-  margin: 0;
-  color: #222233;
-  font-size: 3em;
-}
-h2 {
-  margin: 0;
-}
-h3 {
-  margin: 0;
 }
 .linksNav {
   width: 50%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2%;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 3%;
-  text-align: center;
 }
-.linksNav ul {
-  list-style-type: none;
-  display: block;
-  width: 100%;
-  text-align: center;
-  padding: 0;
-}
-.linkButton {
-  display: inline-block;
+.linksNav a {
+  flex-grow: 1;
   background-color: #5B505D;
-  width: 20%;
-  margin-right: 3%;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  color: #FFFFFF;
-  text-decoration: none;
-  text-align: center;
-}
-.linkButton:hover {
-  background-color: #7F577F;
-}
-.selectedLink {
   display: inline-block;
-  background-color: #7F577F;
-  width: 20%;
   margin-right: 3%;
-  padding-top: 1%;
-  padding-bottom: 1%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  text-decoration: none;
   color: #FFFFFF;
 }
-.linkButton a {
-  text-decoration: none;
+.linksNav a.selectedLink {
+  background-color: #7F577F;
+  color: #FFFFFF;
+}
+.linksNav a:hover {
+  background-color: #7F577F;
 }
 main {
   margin-left: auto;
@@ -71,7 +56,6 @@ main {
 }
 article.game {
   overflow: auto;
-  margin-bottom: 5%;
 }
 article.game a {
   color: #965BA2;
@@ -80,19 +64,16 @@ article.game a {
   font-size: 1.5em;
 }
 article.game a.minorLink {
-  color: #965BA2;
-  text-decoration: none;
   font-weight: normal;
   font-size: 1.0em;
 }
 article.game img {
   float: left;
-  width: 40%;
-  margin-right: 5%;
+  margin-right: 2%;
   margin-bottom: 2%;
 }
-article.game p {
-  margin-top: 0;
+article.game div {
+  clear: both;
 }
 .description {
   float: left;

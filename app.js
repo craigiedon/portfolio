@@ -54,7 +54,7 @@ app.use(session({secret: 'I like turtles',
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(multer({dest: './public/Games',
+app.use(multer({dest: './public/gameFiles',
 		rename: function(fieldname, filename){
 		    return filename;
 		}
@@ -71,17 +71,23 @@ function isLoggedIn(req, res, next) {
     res.status(403).end();
 }
 
-app.post('/authenticate', passport.authenticate('local'),
+app.post('/api/authenticate', passport.authenticate('local'),
 	 function(req,res){
 	     res.send(req.user);
 	 });
 
-app.get('/games/:id?', function(req,res){
+app.get('/api/games/:id?', function(req,res){
     if(req.params.id){
+	var id;
+	try{
+	    id = ObjectId(req.params.id);
+	}
+	catch(err){
+	    return res.send("Invalid Object Id");
+	}
 	db.collection('games').findOne(
-	    {_id: ObjectId(req.params.id)},
+	    {_id: id},
 	    function(err, result){
-		if(err) throw err;
 		res.send(result);
 	    });
     }
@@ -93,7 +99,7 @@ app.get('/games/:id?', function(req,res){
     }
 });
 
-app.post('/games',
+app.post('/api/games',
 	 isLoggedIn,
 	 function(req,res){
 	     db.collection('games').insert(req.body, function(err,result){
@@ -102,22 +108,35 @@ app.post('/games',
 	     });
 	 });
 
-app.delete('/games/:id', isLoggedIn, function(req,res){
+app.delete('/api/games/:id', isLoggedIn, function(req,res){
+    var id;
+    try{
+	id = ObjectId(req.params.id);
+    }
+    catch(err){
+	return res.send("Invalid Object Id");
+    }
     db.collection('games').remove(
-	{_id: ObjectId(req.params.id)},
+	{_id: id},
 	function(err){
 	    if(err) throw err;
 	    res.send("Removed");
 	});
 });
 
-app.put('/games/id', isLoggedIn, function(req,res){
+app.put('/api/games/id', isLoggedIn, function(req,res){
+    var id;
+    try{
+	id = ObjectId(req.params.id);
+    }
+    catch(err){
+	return res.send("Invalid Object Id");
+    }
     db.collection('games').update(
-	{_id: ObjectId(req.params.id)},
+	{_id: id},
 	{$set:
 	 {"name": req.body.name,
-	  "description": req.body.description,
-	  "image": req.body.image
+	  "description": req.body.description
 	 }
 	},
 	function(err){
@@ -127,14 +146,13 @@ app.put('/games/id', isLoggedIn, function(req,res){
     );
 });
 
+app.get('/admin', function(req,res){
+    res.redirect('/admin.html');
+});
+
 app.use(express.static("public"));
 app.use(function(req,res,next){
     res.status(404).send("Sorry, can't find that!");
 });
 
-var options = {
-    key: fs.readFileSync('security/key.pem'),
-    cert: fs.readFileSync('security/cert.pem')
-};
-
-http.createServer(app).listen(80);
+module.exports = app;
