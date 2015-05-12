@@ -1,9 +1,9 @@
 <article class="game">
-    <h3> {{game.name}} </h3>
-    <img width="150px" height="150px" ng-src="gameFiles/{{game.imageName}}">
+    <h2> {{game.name}} </h2>
     <h4> {{game.dateCreated}} </h4>
-    
-    <p> {{game.description}} </p>
+    <img width="150px" height="150px" ng-src="gameFiles/{{game.imageName}}">
+
+    <md ng-model="game.description"></md>
     
     <div>
 	<a href={{game.playLink}}> Play {{game.name}} </a>
