@@ -75,12 +75,11 @@ article.game {
 article.game a {
   color: #965BA2;
   text-decoration: none;
-  font-weight: bold;
-  font-size: 1.5em;
 }
-article.game a.minorLink {
+article.game a.majorLink {
   font-weight: normal;
-  font-size: 1.0em;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 article.game img {
   float: left;
