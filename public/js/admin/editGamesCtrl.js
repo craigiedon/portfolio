@@ -18,6 +18,15 @@ app.controller('editGamesCtrl', function($location, $scope, gameService){
 	$location.path("/editGame/" + game._id);
     };
 
+    $scope.save = function(){
+	for(var i = 0; i < $scope.games.length; i++){
+	    if($scope.games[i].rank !== i){
+		$scope.games[i].rank = i;
+		gameService.update($scope.games[i]._id, $scope.games[i]);
+	    }
+	}
+    };
+
     $scope.sortableOptions = {
 	update: function(e, ui){
 	    console.log($scope.games);
