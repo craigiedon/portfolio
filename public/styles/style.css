@@ -17,10 +17,11 @@ a {
   display: inline-block;
 }
 .gameContainer img {
-  transition: transform 0.5s ease;
+  transition: width 0.25s ease, height 0.25s ease;
 }
 .gameContainer img:hover {
-  transform: scale(1.05);
+  width: 160px;
+  height: 160px;
 }
 header {
   margin-top: 5%;
