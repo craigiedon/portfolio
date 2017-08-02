@@ -7,6 +7,6 @@ app.get('/', function (req : any, res : any) {
     res.send('Hello World!');
 })
 
-app.listen(80, function () {
+app.listen(3000, function () {
     console.log("Example app listening on port 8080!");
 })
