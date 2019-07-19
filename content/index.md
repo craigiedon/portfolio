@@ -6,7 +6,7 @@ I did an undergraduate masters in Informatics (MInf) at the University of Edinbu
 
 ## Research
 
-My PhD thesis was all about Unawareness: What happens when computational agents have to learn the task itself as they go along? Rather than just optimizing parameters in a pre-specified domain. In my current role, I'm interested in incorporating safety guarantees and interpretability properties into robotic and computer vision tasks.
+My PhD thesis was all about Unawareness: What happens when computational agents have to learn the task itself as they go along (rather than just optimizing parameters in a pre-specified domain)? In my current role, I'm interested in incorporating safety guarantees and interpretability properties into robotic and computer vision tasks.
 
 <h2 id="publications"> Publications </h2>
 
