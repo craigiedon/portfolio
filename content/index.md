@@ -8,20 +8,11 @@ I did an undergraduate masters in Informatics (MInf) at the University of Edinbu
 
 I am interested in how machines can deal with the unexpected. Given huge amounts of data and enough time, computers can learn the best way to perform specific tasks.  However, what happens when you slightly change the task, teach the machine a new skill, or reveal that the initial problem was more complicated than it first appeared?
 
-## Publications
-
-### Conference Papers
-
-- Innes, C., & Lascarides, A. (2019). Learning Factored Markov Decision Processes with Unawareness. In Conference on Uncertainty in Artificial Intelligence.
-- Innes, C., & Lascarides, A. (2019, May). Learning Structured Decision Problems with Unawareness. In International Conference on Machine Learning.
-
-### Extended Abstracts
-
-- Innes, C., & Lascarides, A. (2019). Learning Factored Markov Decision Processes with Unawareness. In International Conference on Autonomous Agents and Multiagent Systems.
+<h2 id="publications"> Publications </h2>
 
 ## Games
 
-In my spare time I like to design small games. You can find a list of them on my <a href="https://craiginnes.itch.io/"> Itch.io page </a>. If you're interested in making games, I suggest using either <a href="http://www.unity.com"> Unity </a>, or <a href="http://www.yoyogames.com/gamemaker"> GameMaker </a>, then getting involved in an upcoming <a href="http://www.ludumdare.com"> Game Jam </a> to get some inspiration.
+In my spare time I like to design small games. You can find a list of them on my [Itch.io](https://craiginnes.itch.io/) page. If you're interested in making games, I suggest using either [Unity](http://www.unity.com), or [GameMaker](http://www.yoyogames.com/gamemaker), then getting involved in a [Game Jam](http://www.ludumdare.com) to get some inspiration.
 
 ## Contact
 

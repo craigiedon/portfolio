@@ -1,0 +1,34 @@
+{
+    "conference":
+    [
+        {
+            "authors" : ["Craig Innes", "Alex Lascarides"],
+            "title": "Learning Factored Markov Decision Processes with Unawareness",
+            "year": 2019,
+            "conference": "Uncertainty in Artificial Intelligence",
+            "paperLink": "https://openreview.net/pdf?id=BJxC5txh8E",
+            "supplementaryMaterial": "https://craigiedon.github.io/uai2019Unawareness/technicalSupplement.pdf"
+        },
+        {
+            "authors" : ["Craig Innes", "Alex Lascarides"],
+            "title": "Learning Structured Decision Problems with Unawareness",
+            "year": 2019,
+            "conference": "International Conference on Machine Learning",
+            "paperLink": "http://proceedings.mlr.press/v97/innes19a/innes19a.pdf",
+            "supplementaryMaterial": "http://proceedings.mlr.press/v97/innes19a/innes19a-supp.pdf"
+        }
+    ],
+    "abstract": [
+        {
+            "authors" : ["Craig Innes", "Alex Lascarides"],
+            "title": "Learning Factored Markov Decision Processes with Unawareness - Extended Abstract",
+            "year": 2019,
+            "conference": "International Conference on Autonomous Agents and Multiagent Systems",
+            "paperLink": "http://www.ifaamas.org/Proceedings/aamas2019/pdfs/p2030.pdf"
+        }
+    ],
+    "journal": [],
+    "working": [],
+    "thesis": [],
+    "book": []
+}

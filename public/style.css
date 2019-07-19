@@ -22,11 +22,12 @@ h2{
 .flex-row{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .main-content{
-  width: 70%;
+  width: 50%;
+  min-width: 300px;
 }
 
 .main-content h2{
@@ -43,6 +44,8 @@ h2{
 
 .side-bar{
   width: 15%;
+  margin-right: 5%;
+  min-width: 200px;
 }
 
 .list-unstyled {
