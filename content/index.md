@@ -16,4 +16,4 @@ In my spare time I like to design small games. You can find a list of them on my
 
 ## Contact
 
-You can email me at [my-first-name] [dot] [my-last-name] [at] sms [dot] ed [dot] ac [dot] uk
+You can email me at [my-first-name] [dot] [my-last-name] [at] ed [dot] ac [dot] uk
