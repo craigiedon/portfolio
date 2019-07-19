@@ -6,8 +6,8 @@
             "title": "Learning Factored Markov Decision Processes with Unawareness",
             "year": 2019,
             "conference": "Uncertainty in Artificial Intelligence",
-            "paperLink": "https://openreview.net/pdf?id=BJxC5txh8E",
-            "supplementaryMaterial": "https://craigiedon.github.io/uai2019Unawareness/technicalSupplement.pdf"
+            "paperLink": "http://auai.org/uai2019/proceedings/papers/24.pdf",
+            "supplementaryMaterial": "http://auai.org/uai2019/proceedings/supplements/24_supplement.pdf"
         },
         {
             "authors" : ["Craig Innes", "Alex Lascarides"],

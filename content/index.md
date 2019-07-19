@@ -2,11 +2,11 @@
 
 ## Background
 
-I did an undergraduate masters in Informatics (MInf) at the University of Edinburgh, worked as a programmer for a bit, then changed my mind and went back to University. I'm currently pursuing a PhD in artificial intelligence at the Institute for Language, Cognition and Computation at the University of Edinburgh.
+I did an undergraduate masters in Informatics (MInf) at the University of Edinburgh, worked as a programmer for a bit, then changed my mind and went back to University. I did my PhD at the Institute for Language, Cognition and Computation at Edinburgh, and am currently working as a Post-Doctorate research associate one building over in the Intitutde for Perception, Action, and Behaviour.
 
 ## Research
 
-I am interested in how machines can deal with the unexpected. Given huge amounts of data and enough time, computers can learn the best way to perform specific tasks.  However, what happens when you slightly change the task, teach the machine a new skill, or reveal that the initial problem was more complicated than it first appeared?
+My PhD thesis was all about Unawareness: What happens when computational agents have to learn the task itself as they go along? Rather than just optimizing parameters in a pre-specified domain. In my current role, I'm interested in incorporating safety guarantees and interpretability properties into robotic and computer vision tasks.
 
 <h2 id="publications"> Publications </h2>
 
