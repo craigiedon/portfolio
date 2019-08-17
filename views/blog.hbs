@@ -1,0 +1,21 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+    <link href="/style.css" rel="stylesheet">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+    <title> Blog Posts</title>
+</head>
+
+<body>
+    <h1>Blog</h1> 
+
+    <ul class="list-unstyled little-margin">
+        {{#each posts}}
+        <li>
+            <h2> <a href="/blog/posts/{{link}}"> {{title}} </a></h2> 
+            <h4> {{date}} </h4> 
+        </li>
+        {{/each}}
+    </ul>
+</body>
+</html>
