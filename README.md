@@ -16,6 +16,32 @@ However, this will not update if you make changes to the functionality. You are 
 
     forever -w app.js
 
+## Setup for "One-Click" Git Deploy
+
+I've added my web server as a remote alongside origin using:
+
+    git remote add live root@www.craiginnes.com:/root/bare-repo/portfolio.git
+
+On the server, the bare-repo is a cloned version of my website repository, cloned using:
+
+    git clone --bare [repo-address]
+
+The `--bare` flag means that the source code itself is not checked out, just a tracker for the current version of the code. To then actually turn this into a deployment, i put code in the `post-receive` hook of this bare repo which checks out the latest version in a `website` directory, restarts the server, and also reruns `npm install` just in case I've added any new libraries from version to version.
+
+I now have a few remaining annoyances. For one, I still have to enter in my password every time I ssh in. This can be remedied by generating an ssh key with
+
+    ssh-keygen
+
+Then copying this key over to the server with a command that looks something like:
+
+    cat ~/.ssh/id_rsa.pub | ssh username@203.0.113.0 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+
+
+Another minor annoyance is that i have to push twice every time now: Once to the origin repo, and once to the live web server. To push to both at once, I can just set up a new remote alias:
+
+    git remote add all [original-repo-address]
+    git remote set-url --add all [web-server-address]
+
 ## Notes for Troubleshooting
 
 Once you have pushed changes to the server, you will have to chase them to the server and pull again from there.
