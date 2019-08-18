@@ -1,5 +1,21 @@
 # My Personal Static Web Page
 
+## Develop Loop
+
+The functionality for this website is written in [typescript](https://typescriptlang.org). So when writing code, you should run:
+
+    tsc -w
+
+On the terminal to watch for updates to files, and recompile when changes are made.
+
+To run the app locally, do
+
+    node app.js
+
+However, this will not update if you make changes to the functionality. You are better to run things with the [Forever](https://www.npmjs.com/package/forever) library or equivalent, so that the server restarts each time a functional change is made. This can be run via:
+
+    forever -w app.js
+
 ## Notes for Troubleshooting
 
 Once you have pushed changes to the server, you will have to chase them to the server and pull again from there.
