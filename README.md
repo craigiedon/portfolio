@@ -30,4 +30,10 @@ And restart it with:
 
     service portfolioApp restart
 
-To change the configuration, you go to `/etc/init/portfolioApp.conf`
+To change the configuration, you go to
+
+    /etc/init/portfolioApp.conf
+
+The error logs for this server are dumped in:
+
+    /var/log/node.log
