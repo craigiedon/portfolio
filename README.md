@@ -30,4 +30,4 @@ And restart it with:
 
     service portfolioApp restart
 
-To change the configuration, you want to go to /etc/init/portfolioApp.conf
+To change the configuration, you go to `/etc/init/portfolioApp.conf`
