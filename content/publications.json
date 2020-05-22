@@ -21,7 +21,7 @@
     "abstract": [
         {
             "authors" : ["Craig Innes", "Alex Lascarides"],
-            "title": "Learning Factored Markov Decision Processes with Unawareness - Extended Abstract",
+            "title": "Learning Factored Markov Decision Processes with Unawareness - Ext Abstract",
             "year": 2019,
             "conference": "International Conference on Autonomous Agents and Multiagent Systems",
             "paperLink": "http://www.ifaamas.org/Proceedings/aamas2019/pdfs/p2030.pdf"
