@@ -2,6 +2,15 @@
     "conference":
     [
         {
+            "authors" : ["Craig Innes", "Subramanian Ramamoorthy"],
+            "title": "Elaborating on Learned Demonstrations with Temporal Logic Specifications",
+            "year": 2020,
+            "conference": "Robotics Science and Systems",
+            "paperLink": "https://arxiv.org/abs/2002.00784",
+            "supplementaryMaterial": "https://sites.google.com/view/ltl-dmp-rss-2020/"
+
+        },
+        {
             "authors" : ["Craig Innes", "Alex Lascarides"],
             "title": "Learning Factored Markov Decision Processes with Unawareness",
             "year": 2019,
@@ -21,7 +30,7 @@
     "abstract": [
         {
             "authors" : ["Craig Innes", "Alex Lascarides"],
-            "title": "Learning Factored Markov Decision Processes with Unawareness - Ext Abstract",
+            "title": "Learning Factored Markov Decision Processes with Unawareness - Extended Abstract",
             "year": 2019,
             "conference": "International Conference on Autonomous Agents and Multiagent Systems",
             "paperLink": "http://www.ifaamas.org/Proceedings/aamas2019/pdfs/p2030.pdf"
