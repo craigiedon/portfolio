@@ -22,9 +22,6 @@ app.get("/", function (req, res) {
         res.render("index", { publications: pubs });
     });
 });
-app.get("/ugly", function (req, res) {
-    res.render("ugly", {});
-});
 app.get("/handle-test", function (req, res) {
     res.render("test", { person: "Craig" });
 });
