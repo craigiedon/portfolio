@@ -44,9 +44,14 @@ Another minor annoyance is that i have to push twice every time now: Once to the
 
 ## Notes for Troubleshooting
 
-Once you have pushed changes to the server, you will have to chase them to the server and pull again from there.
+Once you have pushed changes to the server, you shouldn't have to pull them again server side. If you look in the file:
 
-If this still doesn't make the changes go through, you may have to restart the node server. The node server is controlled by UpStart (see the following tutorial for details: https://www.digitalocean.com/community/tutorials/the-upstart-event-system-what-it-is-and-how-to-use-it)
+	bare-repo/portfolio.git/hook/post-receive
+
+You should see that the repository is automatically set up to set up the latest version whenever someone pushes to the repo
+
+
+However, if the changes still haven't gone through, you may have to restart the node server. The node server is controlled by UpStart (see the following tutorial for details: https://www.digitalocean.com/community/tutorials/the-upstart-event-system-what-it-is-and-how-to-use-it)
 
 The main thrust of it is that you can see the current status of the service by running:
 
@@ -63,3 +68,9 @@ To change the configuration, you go to
 The error logs for this server are dumped in:
 
     /var/log/node.log
+
+I've had to remove the line that allows the system to do an NPM install on restarting (it wasn't working for some reason, I don't know why...). So you may need to re-run
+
+	npm install
+
+In the website directory to ensure everything is set up correctly

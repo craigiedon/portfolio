@@ -18,7 +18,7 @@
   "dependencies": {
     "@types/node": "^8.0.17",
     "express": "^4.17.1",
-    "hbs": "^4.0.4",
+    "hbs": "^4.1.1",
     "markdown-it": "^8.4.2"
   }
 }
