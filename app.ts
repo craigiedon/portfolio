@@ -26,6 +26,11 @@ app.get("/", (req : any , res : any) => {
     });
 });
 
+app.get("/ugly", (req : any , res : any) => {
+    res.render("ugly", {});
+});
+
+
 app.get("/handle-test", (req: any, res: any) => {
     res.render("test", {person: "Craig"});
 });
