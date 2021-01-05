@@ -2,6 +2,12 @@
     "conference":
     [
         {
+            "authors": ["Michael Burke", "Katie Lu", "Daniel Angelov", "Artūras Straižys", "Craig Innes", "Kartic Subr", "Subramanian Ramamoorthy"],
+            "title": "Learning robotic ultrasound scanning using probabilistic temporal ranking",
+            "year": 2020,
+            "paperLink": "https://arxiv.org/abs/2002.01240"
+        },
+        {
             "authors" : ["Craig Innes", "Subramanian Ramamoorthy"],
             "title": "Elaborating on Learned Demonstrations with Temporal Logic Specifications",
             "year": 2020,

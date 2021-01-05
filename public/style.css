@@ -67,6 +67,10 @@ h2{
 }
 
 a {
-  text-decoration: none;
+  /* text-decoration: none; */
   color: #229fc9;
+}
+
+.paper-links a{
+  margin-right: 10px;
 }

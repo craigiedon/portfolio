@@ -48,9 +48,14 @@
                 {{#each publications.conference}}
                 <li>
                     {{printAuthors authors}} ({{year}}). {{title}}. In {{conference}}
-                    <div>
-                        <a href="{{paperLink}}">paper link</a>
-                        <a href="{{supplementaryMaterial}}"> technical supplement </a>
+                    <div class="paper-links">
+                        {{#if paperLink}}
+                          <a href="{{paperLink}}">paper</a>
+                        {{/if}}
+
+                        {{#if supplementaryMaterial}}
+                          <a href="{{supplementaryMaterial}}"> technical-supplement </a>
+                        {{/if}}
                     </div>
                 </li>
                 {{/each}}
@@ -61,9 +66,14 @@
                 {{#each publications.abstract}}
                 <li>
                     {{printAuthors authors}} ({{year}}). {{title}}. In {{conference}}
-                    <div>
-                        <a href="{{paperLink}}">paper link</a>
-                        <a href="{{supplementaryMaterial}}"> technical supplement </a>
+                    <div class="paper-links">
+                        {{#if paperLink}}
+                          <a href="{{paperLink}}">paper</a>
+                        {{/if}}
+
+                        {{#if supplementaryMaterial}}
+                          <a href="{{supplementaryMaterial}}"> technical-supplement </a>
+                        {{/if}}
                     </div>
                 </li>
                 {{/each}}
