@@ -12,21 +12,6 @@
         },
         {
             "authors": [
-                "Michael Burke",
-                "Katie Lu",
-                "Daniel Angelov",
-                "Artūras Straižys",
-                "Craig Innes",
-                "Kartic Subr",
-                "Subramanian Ramamoorthy"
-            ],
-            "title": "Learning robotic ultrasound scanning using probabilistic temporal ranking",
-            "year": 2020,
-            "conference": "(Working paper)",
-            "paperLink": "https://arxiv.org/abs/2002.01240"
-        },
-        {
-            "authors": [
                 "Craig Innes",
                 "Subramanian Ramamoorthy"
             ],
@@ -71,7 +56,23 @@
             "paperLink": "http://www.ifaamas.org/Proceedings/aamas2019/pdfs/p2030.pdf"
         }
     ],
-    "journal": [],
+    "journal": [
+        {
+            "authors": [
+                "Michael Burke",
+                "Katie Lu",
+                "Daniel Angelov",
+                "Artūras Straižys",
+                "Craig Innes",
+                "Kartic Subr",
+                "Subramanian Ramamoorthy"
+            ],
+            "title": "Learning robotic ultrasound scanning using probabilistic temporal ranking",
+            "year": 2021,
+            "journal": "(Working paper)",
+            "paperLink": "https://arxiv.org/abs/2002.01240"
+        }
+    ],
     "working": [],
     "thesis": [],
     "book": []
