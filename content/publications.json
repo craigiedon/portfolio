@@ -48,6 +48,18 @@
         {
             "authors": [
                 "Craig Innes",
+                "Yordan Hristov",
+                "Georgios Kamaras",
+                "Subramanian Ramamoorthy"
+            ],
+            "title": "Automatic Synthesis of Experiment Designs from Probabilistic Environment Specifications",
+            "year": 2021,
+            "conference": "10th Workshop on Synthesis (SYNT) at the International Conference on Computer Aided Verification (CAV)",
+            "paperLink": "https://arxiv.org/pdf/2107.00093.pdf"
+        },
+        {
+            "authors": [
+                "Craig Innes",
                 "Alex Lascarides"
             ],
             "title": "Learning Factored Markov Decision Processes with Unawareness - Extended Abstract",
