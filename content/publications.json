@@ -5,6 +5,29 @@
                 "Craig Innes",
                 "Subramanian Ramamoorthy"
             ],
+            "title": "Automated testing with temporal logic specifications for robotic controllers using adaptive experiment design",
+            "year": 2022,
+            "conference": "International Conference on Robotics and Automation (ICRA)",
+            "paperLink": "https://arxiv.org/abs/2109.08071"
+        },
+        {
+            "authors": [
+                "Luca Viano",
+                "Yu-Ting Huang",
+                "Parameswaran Kamalaruban",
+                "Craig Innes",
+                "Subramanian Ramamoorthy",
+                "Adrian Weller"
+            ],
+            "title": "Robust Learning from Observation with Model Misspecification",
+            "year": 2022,
+            "conference": "International Conference on Autonomous Agents and Multiagent Systems (AAMAS)"
+        },
+        {
+            "authors": [
+                "Craig Innes",
+                "Subramanian Ramamoorthy"
+            ],
             "title": "ProbRobScene: A Probabilistic Specification Language for 3D Robotic Manipulation Environments",
             "year": 2021,
             "conference": "International Conference on Robotics and Automation",

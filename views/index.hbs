@@ -44,10 +44,10 @@
 
         <div>
             <h3> Conference Papers </h3>
-            <ul>
+            <ul class="pub-list">
                 {{#each publications.conference}}
                 <li>
-                    {{printAuthors authors}} ({{year}}). {{title}}. In {{conference}}
+                    {{printAuthors authors}} ({{year}}). <b> {{title}}. </b> In {{conference}}
                     <div class="paper-links">
                         {{#if paperLink}}
                           <a href="{{paperLink}}">paper</a>
@@ -65,7 +65,7 @@
             <ul>
                 {{#each publications.journal}}
                 <li>
-                    {{printAuthors authors}} ({{year}}). {{title}}. In {{journal}}
+                    {{printAuthors authors}} ({{year}}). <b>{{title}}</b>. In {{journal}}
                     <div class="paper-links">
                         {{#if paperLink}}
                           <a href="{{paperLink}}">paper</a>
@@ -83,7 +83,7 @@
             <ul>
                 {{#each publications.abstract}}
                 <li>
-                    {{printAuthors authors}} ({{year}}). {{title}}. In {{conference}}
+                    {{printAuthors authors}} ({{year}}). <b>{{title}} </b>. In {{conference}}
                     <div class="paper-links">
                         {{#if paperLink}}
                           <a href="{{paperLink}}">paper</a>
