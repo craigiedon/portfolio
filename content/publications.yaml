@@ -1,0 +1,119 @@
+---
+conference:
+- 
+    authors:
+        - "Craig Innes"
+        - "Subramanian Ramamoorthy"
+    title: "Testing rare downstream safety violations via upstream adaptive sampling of perception error models"
+    year: 2022
+    conference: "(Working Paper)"
+    paperLink: "https://arxiv.org/abs/2209.09674"
+-
+    authors:
+        - "Manu Lahariya"
+        - "Craig Innes"
+        - "Chris Develder"
+        - "Subramanian Ramamoorthy"
+    title: "Learning physics-informed simulation models for soft robotic manipulation: A case study with dielectric elastomer actuators"
+    year: 2022
+    conference: "International Conference on Intelligent Robots and Systems (IROS)"
+    paperLink: "https://arxiv.org/abs/2202.12977"
+-
+    authors:
+        - "Anthony Corso"
+        - "Sydney Katz"
+        - "Craig Innes"
+        - "Xin Du"
+        - "Subramanian Ramamoorthy"
+        - "Mykel Kochenderfer"
+    title: "Risk-driven design of perception systems"
+    year: 2022
+    conference: "Conference on Neural Information Processing Systems (NeurIPS)"
+    paperLink: "https://arxiv.org/abs/2205.10677"
+-
+    authors: 
+        - "Craig Innes"
+        - "Subramanian Ramamoorthy"
+    title: "Automated testing with temporal logic specifications for robotic controllers using adaptive experiment design"
+    year: 2022
+    conference: "International Conference on Robotics and Automation (ICRA)"
+    paperLink: "https://arxiv.org/abs/2109.08071"
+-
+    authors:
+        - "Luca Viano"
+        - "Yu-Ting Huang"
+        - "Parameswaran Kamalaruban"
+        - "Craig Innes"
+        - "Subramanian Ramamoorthy"
+        - "Adrian Weller"
+    title: "Robust Learning from Observation with Model Misspecification"
+    year: 2022
+    conference: "International Conference on Autonomous Agents and Multiagent Systems (AAMAS)"
+-
+    authors:
+        - "Craig Innes"
+        - "Subramanian Ramamoorthy"
+    title: "ProbRobScene: A Probabilistic Specification Language for 3D Robotic Manipulation Environments"
+    year: 2021
+    conference: "International Conference on Robotics and Automation"
+    paperLink: "https://arxiv.org/abs/2011.01126"
+- 
+    authors:
+        - "Craig Innes"
+        - "Subramanian Ramamoorthy"
+    title: "Elaborating on Learned Demonstrations with Temporal Logic Specifications"
+    year: 2020
+    conference: "Robotics Science and Systems"
+    paperLink: "https://arxiv.org/abs/2002.00784"
+    supplementaryMaterial: "https://sites.google.com/view/ltl-dmp-rss-2020/"
+-
+    authors:
+        - "Craig Innes"
+        - "Alex Lascarides"
+    title: "Learning Factored Markov Decision Processes with Unawareness"
+    year: 2019
+    conference: "Uncertainty in Artificial Intelligence"
+    paperLink: "http://auai.org/uai2019/proceedings/papers/24.pdf"
+    supplementaryMaterial: "http://auai.org/uai2019/proceedings/supplements/24_supplement.pdf"
+-
+    authors:
+        - "Craig Innes"
+        - "Alex Lascarides"
+    title: "Learning Structured Decision Problems with Unawareness"
+    year: 2019
+    conference: "International Conference on Machine Learning"
+    paperLink: "http://proceedings.mlr.press/v97/innes19a/innes19a.pdf"
+    supplementaryMaterial: "http://proceedings.mlr.press/v97/innes19a/innes19a-supp.pdf"
+abstract:
+-
+    authors:
+        - "Craig Innes"
+        - "Yordan Hristov"
+        - "Georgios Kamaras"
+        - "Subramanian Ramamoorthy"
+    title: "Automatic Synthesis of Experiment Designs from Probabilistic Environment Specifications"
+    year: 2021
+    conference: "10th Workshop on Synthesis (SYNT) at the International Conference on Computer Aided Verification (CAV)"
+    paperLink: "https://arxiv.org/pdf/2107.00093.pdf"
+-
+    authors:
+        - "Craig Innes"
+        - "Alex Lascarides"
+    title: "Learning Factored Markov Decision Processes with Unawareness - Extended Abstract"
+    year: 2019
+    conference: "International Conference on Autonomous Agents and Multiagent Systems"
+    paperLink: "http://www.ifaamas.org/Proceedings/aamas2019/pdfs/p2030.pdf"
+journal:
+-
+    authors:
+        - "Michael Burke"
+        - "Katie Lu"
+        - "Daniel Angelov"
+        - "Artūras Straižys"
+        - "Craig Innes"
+        - "Kartic Subr"
+        - "Subramanian Ramamoorthy"
+    title: "Learning robotic ultrasound scanning using probabilistic temporal ranking"
+    year: 2021
+    journal: "(Working paper)"
+    paperLink: "https://arxiv.org/abs/2002.01240"

@@ -4,6 +4,7 @@ const path = require('path');
 const app = express();
 const md = require('markdown-it')({html: true});
 const hbs = require('hbs');
+const yaml = require('js-yaml');
 
 app.use(express.static('public'));
 app.use(express.static('node_modules/bootstrap/dist'));
@@ -19,9 +20,9 @@ hbs.registerHelper('printAuthors', (authors : Array<String>) => {
 });
 
 app.get("/", (req : any , res : any) => {
-    fs.readFile('content/publications.json', 'utf8', (err : any, data : any)  => { 
+    fs.readFile('content/publications.yaml', 'utf8', (err : any, data : any)  => { 
         if (err) throw err;
-        let pubs = JSON.parse(data);
+        let pubs = yaml.load(data);
         res.render("index", {publications: pubs})
     });
 });
@@ -33,6 +34,13 @@ app.get("/ugly", (req : any , res : any) => {
 
 app.get("/handle-test", (req: any, res: any) => {
     res.render("test", {person: "Craig"});
+});
+
+app.get("/helloyaml", (req: any, res: any) => {
+    const doc = yaml.load(fs.readFileSync('content/publications.yaml', 'utf8'))
+    console.log(doc);
+    res.set("Content-Type", "application/json");
+    res.send(doc);
 });
 
 app.get("/blog", (req: any, res: any) => {
