@@ -5,8 +5,8 @@ conference:
         - "Craig Innes"
         - "Subramanian Ramamoorthy"
     title: "Testing rare downstream safety violations via upstream adaptive sampling of perception error models"
-    year: 2022
-    conference: "(Working Paper)"
+    year: 2023
+    conference: "International Conference on Robotics and Automation (ICRA)"
     paperLink: "https://arxiv.org/abs/2209.09674"
 -
     authors:
