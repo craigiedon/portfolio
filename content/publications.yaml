@@ -88,6 +88,16 @@ abstract:
 -
     authors:
         - "Craig Innes"
+        - "Andrew Ireland"
+        - "Yuhui Lin"
+        - "Subramanian Ramamoorthy"
+    title: "Anticipating Accidents through Reasoned Simulation"
+    year: 2023
+    conference: "International Symposium on Trustworthy Autonomous Systems"
+    paperLink: "https://dl.acm.org/doi/abs/10.1145/3597512.3599698"
+-
+    authors:
+        - "Craig Innes"
         - "Yordan Hristov"
         - "Georgios Kamaras"
         - "Subramanian Ramamoorthy"
@@ -114,6 +124,6 @@ journal:
         - "Kartic Subr"
         - "Subramanian Ramamoorthy"
     title: "Learning robotic ultrasound scanning using probabilistic temporal ranking"
-    year: 2021
-    journal: "(Working paper)"
-    paperLink: "https://arxiv.org/abs/2002.01240"
+    year: 2023
+    journal: "Autonomous Robots"
+    paperLink: "https://link.springer.com/article/10.1007/s10514-023-10120-w"
