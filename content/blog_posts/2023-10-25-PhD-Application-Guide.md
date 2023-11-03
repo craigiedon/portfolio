@@ -9,7 +9,7 @@ For PhDs at Edinburgh in 2024, you'll need to apply via "**EUCLID**". You can ap
 
 ### When to Apply (and when to Start)
 
-Most students start their PhD in **September**. (Note: Technically, **January**/**May** starts are also possible...but this is tricker, as most funding internal selection timelines operate assuming a September start). Remember - regardless of start date, you'll need sufficient time to go through the full application process. 
+Most students start their PhD in **September**. (Note: Technically, **January**/**May** starts are also possible...but this is tricker, as most internal selection timelines operate assuming a September start). Remember - regardless of start date, you'll need sufficient time to go through the full application process. 
 
 The official policy on this is, in theory: For UK students, apply at minimum a month before your desired start date. For International Students, 3 or 4 months beforehand (because of the extra bureaucracy around Visa Requirements, ATAS, CAS etc.,).
 
