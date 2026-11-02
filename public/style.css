@@ -12,6 +12,12 @@ h2{
   color: rgb(70, 70, 70);
 }
 
+h3.red-announce{
+  color: rgb(185, 1, 1);
+  font-weight: 900;
+  border-bottom: 3px solid #b60404;
+}
+
 .avatar{
   width: 70%;
   display: block;

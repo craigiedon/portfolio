@@ -11,7 +11,7 @@ app.set("view engine", "hbs");
 hbs.registerHelper('printAuthors', function (authors) {
     var surnamesFirst = authors.map(function (author) {
         var _a = author.split(" "), firstName = _a[0], lastName = _a[1];
-        return lastName + ", " + firstName[0] + ".";
+        return "".concat(lastName, ", ").concat(firstName[0], ".");
     }).join(", & ");
     return surnamesFirst;
 });
@@ -59,8 +59,8 @@ app.get("/blog", function (req, res) {
 });
 app.get("/blog/posts/:postName", function (req, res) {
     console.log(req.params["postName"]);
-    var postFile = req.params["postName"] + ".md";
-    fs.readFile("content/blog_posts/" + postFile, 'utf8', function (err, data) {
+    var postFile = "".concat(req.params["postName"], ".md");
+    fs.readFile("content/blog_posts/".concat(postFile), 'utf8', function (err, data) {
         if (err)
             throw err;
         var postContentHTML = md.render(data);

@@ -19,7 +19,7 @@
     "@types/node": "^8.0.17",
     "express": "^4.17.1",
     "hbs": "^4.1.1",
-    "markdown-it": "^8.4.2",
-    "js-yaml": "4.1.0"
+    "js-yaml": "4.1.0",
+    "markdown-it": "^13.0.2"
   }
 }
