@@ -1,4 +1,4 @@
-# My Personal Static Web Page
+# My Personal Web Page
 
 ## Develop Loop
 
