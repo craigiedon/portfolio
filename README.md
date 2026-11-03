@@ -42,16 +42,35 @@ Another minor annoyance is that i have to push twice every time now: Once to the
     git remote add all [original-repo-address]
     git remote set-url --add all [web-server-address]
 
-## Notes for Troubleshooting
+## Configuration Server Side
 
-Once you have pushed changes to the server, you shouldn't have to pull them again server side. If you look in the file:
+### Nginx Reverse-Proxy and Security
 
-	bare-repo/portfolio.git/hook/post-receive
+We have a node server set up on our droplet listening on localhost port 3000. However, we need to make it so that when people access the IP-address, it redirects to our node application.
 
-You should see that the repository is automatically set up to set up the latest version whenever someone pushes to the repo
+The configuration for the Nginx server should be located under the folder:
 
+```
+/etc/nginx/sites-available/
+```
 
-However, if the changes still haven't gone through, you may have to restart the node server. The node server is controlled by UpStart (see the following tutorial for details: https://www.digitalocean.com/community/tutorials/the-upstart-event-system-what-it-is-and-how-to-use-it)
+Some tutorials suggest there should be a folder there named after the domain name (E.g., `craiginnes.com`), However, currently i have one named `default` and it seems to work fine.
+
+Note that fiddling this introduces a potential point of failure. You can check for errors with:
+
+```
+sudo nginx -t
+```
+
+And restart the service with:
+
+```
+sudo systemctl restart nginx
+```
+
+### Managing the Node Service with Upstart
+
+The node server is controlled by UpStart (see the following tutorial for details: https://www.digitalocean.com/community/tutorials/the-upstart-event-system-what-it-is-and-how-to-use-it)
 
 The main thrust of it is that you can see the current status of the service by running:
 
@@ -64,6 +83,18 @@ And restart it with:
 To change the configuration, you go to
 
     /etc/init/portfolioApp.conf
+
+### Notes for Troubleshooting
+
+Once you have pushed changes to the server, you shouldn't have to pull them again server side. If you look in the file:
+
+	bare-repo/portfolio.git/hook/post-receive
+
+You should see that the repository is automatically set up to set up the latest version whenever someone pushes to the repo
+
+
+However, if the changes still haven't gone through, you may have to restart the node server. See the Node Service subsection above. 
+
 
 The error logs for this server are dumped in:
 

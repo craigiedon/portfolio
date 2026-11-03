@@ -27,9 +27,6 @@ app.get("/", (req, res) => {
 app.get("/ugly", (req, res) => {
     res.render("ugly", {});
 });
-app.get("/bounce", (req, res) => {
-    res.render("bounce", {});
-});
 app.get("/handle-test", (req, res) => {
     res.render("test", { person: "Craig" });
 });
