@@ -16,10 +16,13 @@
   "author": "Craig Innes",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^8.0.17",
     "express": "^4.17.1",
     "hbs": "^4.1.1",
     "js-yaml": "4.1.0",
-    "markdown-it": "^13.0.2"
+    "markdown-it": "^13.0.2",
+    "typescript": "^7.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6"
   }
 }

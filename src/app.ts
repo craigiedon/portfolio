@@ -31,6 +31,9 @@ app.get("/ugly", (req : any , res : any) => {
     res.render("ugly", {});
 });
 
+app.get("/bounce", (req: any, res: any) => {
+    res.render("bounce", {});
+});
 
 app.get("/handle-test", (req: any, res: any) => {
     res.render("test", {person: "Craig"});
