@@ -1,0 +1,163 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #219BE1;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+
+@font-face {
+  font-family: myFont; /* set name */
+  src: url(Super-Moods.ttf.woff); /* url of the font */
+}
+
+:root{
+    --spintime: 10s;
+}
+
+
+.playerHeads img{
+    position: fixed;
+    z-index: -1;
+    opacity: 25%;
+    width: 8rem;
+    animation:
+    toRight linear 26.6s infinite alternate,
+     bounce linear 68s infinite alternate;
+}
+
+
+.playerHeads img:nth-child(1) { 
+    animation-delay: -1.0s;
+    animation-duration:  26s, 68s;
+}
+.playerHeads img:nth-child(2) { 
+    animation-delay: -55.2s;
+    animation-duration:  20s, 60s;
+}
+.playerHeads img:nth-child(3) { 
+    animation-delay: -103.3s;
+    animation-duration:  18s, 36s;
+}
+.playerHeads img:nth-child(4) { 
+    animation-delay: -150.4s;
+    animation-duration:  16s, 54s;
+}
+.playerHeads img:nth-child(5) { 
+    animation-delay: -203.5s;
+    animation-duration:  13s, 51s;
+}
+.playerHeads img:nth-child(6) { 
+    animation-delay: -255.6s;
+    animation-duration:  10s, 48s;
+}
+
+@keyframes wiggle {
+    0%, 100% {
+        transform: rotate(-7deg);
+    }
+    50% {
+        transform: rotate(7deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes bounce {
+  0% {
+    top:25vh;
+  }
+  50% {
+    top: 75vh;
+  }
+  100% {
+    top: 25vh;
+  }
+}
+
+@keyframes toRight {
+
+  0% {
+    left: 25vw;
+  }
+
+  100% {
+    left: 75vw;
+  }
+}
+
+h1.wave-text{
+    font-family: myFont;
+    color: #FFDF57;
+    -webkit-text-stroke: 3px #8b7200;
+    font-size: 9rem;
+    margin: 0;
+}
+
+h2{
+    font-size: 4rem;
+    -webkit-text-stroke: 2px #b89602;
+    color: #ffea8d;
+    font-family: Helvetica;
+    margin-top: 0;
+    margin-bottom: 5vh;
+}
+
+#sugForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#sugForm input{
+    border: 1px solid #ccc;
+    font-size: 3rem;
+    width: 50vw;
+    padding: 1.5rem;
+    border-radius: 20px;
+    color: rgb(66, 66, 66);
+    margin-bottom: 1vh;
+}
+
+.wave-text span {
+    display: inline-block;
+    animation: wave 1s ease-in-out infinite;
+}
+
+.wave-text span:nth-child(5n-4) {
+    animation-delay: 0.2s;
+}
+.wave-text span:nth-child(5n-3) {
+    animation-delay: 0.4s;
+}
+.wave-text span:nth-child(5n-2) {
+    animation-delay: 0.6s;
+}
+.wave-text span:nth-child(5n-1) {
+    animation-delay: 0.8s;
+}
+.wave-text span:nth-child(5n) {
+    animation-delay: 1.0s;
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
