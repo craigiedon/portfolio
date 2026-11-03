@@ -70,19 +70,10 @@ sudo systemctl restart nginx
 
 ### Managing the Node Service with Upstart
 
-The node server is controlled by UpStart (see the following tutorial for details: https://www.digitalocean.com/community/tutorials/the-upstart-event-system-what-it-is-and-how-to-use-it)
+Previously, I kept node live with "upstart". However, with upgraded ubuntu, the preferred way to do this is via PM2. See this tutorial below for details:
 
-The main thrust of it is that you can see the current status of the service by running:
+<https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-22-04>
 
-    service portfolioApp status
-
-And restart it with:
-
-    service portfolioApp restart
-
-To change the configuration, you go to
-
-    /etc/init/portfolioApp.conf
 
 ### Notes for Troubleshooting
 
